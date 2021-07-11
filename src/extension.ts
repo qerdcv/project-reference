@@ -28,7 +28,7 @@ export function activate(context: vscode.ExtensionContext) {
 		if (file) {
 			file = vscode.workspace.asRelativePath(file);
 			const textAtLine = document.lineAt(activePosition.line).text;
-			if (filetype === 'python' && /^(def|class) (.+):$/.test(textAtLine)) {
+			if (filetype === 'python' && /^(def|class)/.test(textAtLine)) {
 				file = file.replace(/\//g, '.').replace(/\.py/, '');
 				textAtLine.split(' ')[1].replace(/(\(|\:).*/, '');
 				path = `${file}.${textAtLine.split(' ')[1].replace(/(\(|\:).*/, '')}`;
